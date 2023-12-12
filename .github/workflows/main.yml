@@ -23,16 +23,13 @@ jobs:
 
     - name: Login to Amazon ECR
       run: |
-        echo AKIA6OZ2SCD6562M7MWX | docker login --username AWS --password-stdin ${ECR_REGISTRY}
-      env:
-        ECR_REGISTRY: 993870876925.dkr.ecr.us-east-1.amazonaws.com
+        echo AKIA6OZ2SCD6562M7MWX | docker login --username AWS --password-stdin 993870876925.dkr.ecr.us-east-1.amazonaws.com
 
     - name: Build and push Docker image
       run: |
-        docker build -t ${ECR_REGISTRY}/contest_page:latest .
-        docker push ${ECR_REGISTRY}/contest_page:latest
-      env:
-        ECR_REGISTRY: 993870876925.dkr.ecr.us-east-1.amazonaws.com
+        docker build -t 993870876925.dkr.ecr.us-east-1.amazonaws.com/contest_page:latest .
+        docker push 993870876925.dkr.ecr.us-east-1.amazonaws.com/contest_page:latest
+
 
     - name: Logout from Amazon ECR
-      run: docker logout ${ECR_REGISTRY}
+      run: docker logout 993870876925.dkr.ecr.us-east-1.amazonaws.com
