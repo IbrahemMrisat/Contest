@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <style>
+        body {
+            text-align: center;
+            padding: 40px 0;
+            background: #EBF0F5;
+        }
+        
+        .card {
+            background: white;
+            padding: 60px;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #C8D0D8;
+            display: inline-block;
+            margin: 0 auto; /* Center the card horizontally */
+        }
+    
+        h1 {
+            color: #88B04B;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+    
+        p {
+            color: #404F5E;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    
+        /* Additional styles for the form elements */
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+    
+        button {
+            background-color: #88B04B;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+                /* Footer styles */
+                footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+    
+    <title>السحب على 500 شاقل</title>
+</head>
+<body>
+
+    <div class="card">
+        <h1>أدخل السحب على ₪500</h1>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="post" action="{% url 'contest_entry' %}">
+            {% csrf_token %}
+            <label id="full_name">الأسم الكامل</label>
+            <input type="text" name="full_name" required><br>
+            <label id="phone_number">رقم الهاتف</label>
+            <input type="text" name="phone_number" required><br>
+            <button type="submit">تسجيل</button>
+        </form>
+    </div>
+        <!-- Footer -->
+        <footer>
+            &copy; إرساليات مريسي - 0546304042 &copy;
+        </footer>
+</body>
+</html>
