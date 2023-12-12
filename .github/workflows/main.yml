@@ -21,10 +21,12 @@ jobs:
         platforms: linux/amd64
         push: false
 
+    - name: Configure AWS credentials
+      run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
     - name: Login to Amazon ECR
       id: login-ecr
-      run: |
-        echo ${{ secrets.AWS_ACCESS_KEY_ID }} | aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 993870876925.dkr.ecr.us-east-1.amazonaws.com
+      run: aws ecr get-login-password --region us-east-1 | sh
 
     - name: Build and push Docker image
       run: |
