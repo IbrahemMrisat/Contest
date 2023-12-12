@@ -23,7 +23,7 @@ jobs:
 
     - name: Login to Amazon ECR
       run: |
-        echo ${{ secrets.AWS_ACCESS_KEY_ID }} | docker login --username AWS --password-stdin ${ECR_REGISTRY}
+        echo AKIA6OZ2SCD6562M7MWX | docker login --username AWS --password-stdin ${ECR_REGISTRY}
       env:
         ECR_REGISTRY: 993870876925.dkr.ecr.us-east-1.amazonaws.com
 
